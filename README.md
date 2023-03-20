@@ -1,8 +1,43 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?size=30&duration=4500&color=F77500&width=600&lines=%F0%9F%A6%81_Welcome_Yewon_Yoon_%F0%9F%A6%81+)](https://git.io/typing-svg)
 
-<div align="center">
 
-![소개_인사하는 사자](https://user-images.githubusercontent.com/81146131/221498526-e2db6afd-e36d-447c-ab58-58069793bedf.gif)
+<div align=center>
+<br>
+
+# ˗ˋˏ♡ˎˊ˗
 
 
+#### 🥨 경영학부 20학번 윤예원
+#### 🥨 멋사 프론트엔드 파트
+
+<br>
+<a href="https://lemonbalmherb.tistory.com"><img src="https://img.shields.io/badge/Tistory-000000?style=flat-square&logo=Tistory&logoColor=white"/></a>
+<a href="https://blog.naver.com/lizzy2"><img src="https://img.shields.io/badge/Naver-03C75A?style=flat-square&logo=Naver&logoColor=white"/></a>
+
+<br>
+<br>
 </div>
+<div align=center>
+
+### 🍒 공부한 언어
+
+  <br>
+  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <br>
+
+
+<br>
+<br>
+<br>
+
+### 🍒 지금 공부하는 언어
+
+<br>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/></a>&nbsp
+</div>
+<br>
+<br>
+<br>

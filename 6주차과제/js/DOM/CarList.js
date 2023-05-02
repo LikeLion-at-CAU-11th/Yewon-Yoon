@@ -8,6 +8,9 @@ export default class CarList {
     addCar(name){
         this.cars.push(name);
     }
+    resetList() {  
+        this.cars.splice(0);
+    }
     getWinners(){
         let carScoreList=[];
         for (let i =0; i<this.cars.length;i++){

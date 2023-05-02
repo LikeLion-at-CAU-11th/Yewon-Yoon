@@ -13,12 +13,12 @@ function gameResultView(carList, gameCount) {
         newDiv.appendChild(textInDiv);
     })
 }
-function gameWinnerView() {
+function gameWinnerView(CarList) {
     gameWinner.innerText = CarList.getWinners();
 }
 export default function gameView(CarList, gameCount){
     for (let i=0; i<gameCount; i++){
-        gameResultView();
+        gameResultView(CarList);
     }
-    gameWinnerView();
+    gameWinnerView(CarList);
 };

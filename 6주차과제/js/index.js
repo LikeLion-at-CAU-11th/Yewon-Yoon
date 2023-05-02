@@ -7,27 +7,26 @@ const carNamesSubmitBtn = document.getElementById("car-names-submit");
 const racingCountSubmitBtn = document.getElementById("racing-count-submit");
 const carList = new CarList();
 const gameResult = document.getElementById("result");
-const gameCount = inputCount.value;  
-const gameRun = (e)=>{  
-    e.preventDefault();
-    try{
+
+carNamesSubmitBtn.addEventListener("click", (e)=>{
+    try{e.preventDefault();
         if(inputName.value.length === 0){
             throw "inputNameError";
         }
-        if(inputCount.value.length === 0){
-            throw "inputCountError";
-        }
+        
         if (inputName.value.includes(",")){
-            const carNames = inputName.value.split(',');
-            carNames.forEach((carName)=>{
-                carName = carName.trim()
-                if (carName.length > 5){
-                    throw "inputNameLengthError"
+            const carNames = inputName.value.split(",");
+            carList.resetList();
+           for (const name of carNames){
+                name = name.trim()            
+                if (name.length > 5){
+                    throw "inputNameLengthError";
                 }
                 else{
-                    carList.addCar(new Car(carName));
+                    const car = new Car(name.trim());
+                    carList.addCar(car);
                 }
-            });            
+            }            
         }else{
             const carName = inputName.value;
             carName = carName.trim()
@@ -36,24 +35,37 @@ const gameRun = (e)=>{
             }
             else{
                 carList.addCar(new Car(carName));                
-            }
-                       
+            }                   
         }
-        gameView(carList, gameCount); 
-        
-
-    } catch(err){
+    }
+    catch(err){
         if(err == "inputNameError"){
             alert("글자 입력해주세요.");
-        }
-        else if(err == "inputCountError"){
-            alert("숫자 입력해주세요.");
         }
         else if(err == "inputNameLengthError"){
             alert("5자이내로 입력해주세요.")
 
         }
     }
-}
-carNamesSubmitBtn.addEventListener("click", gameRun);
-racingCountSubmitBtn.addEventListener("click", gameRun);
+});
+racingCountSubmitBtn.addEventListener("click",(e)=>{
+    try{
+        e.preventDefault();
+        const gameCount = parseInt(inputCount.value);
+        if(gameCount.length === 0){
+            throw "inputCountError";
+        }
+        else{
+            gameResult.innerHTML = "";
+            for(let i=0; i<gameCount; i++){
+                gameView(carList, gameCount);
+            }
+        }
+    }
+    catch(err){
+        if(err == "inputCountError"){
+            alert("숫자 입력해주세요.");
+        }
+    }    
+});
+

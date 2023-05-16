@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>방명록</h3>
+	<!-- 서버로 데이터를 전송하려면 form이 꼭 필요함. -->
+	<form name="f">
+		<table id="t1">
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" name="writer" id="writer"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><input type="text" name="content" id="content"></td>
+			</tr>
+			<tr>
+				<th>작성</th>
+				<td><input type="button" value="작성" onclick="postData()"></td> 
+			</tr>
+		</table>
+	</form>
+	
+	<h3>글 목록</h3>
+	<div id="list">
+	<button onclick="getData()">방명록 보기</button>
+	<div id="container"></div>
+		<!-- 새로 생길 요소의 자리를 미리 만들어놓음 -->
+		<!-- <div id="d_1">작성자:<span id="w_1">aaa</span><br/>내용:<span id="c_1">asdf</span><br/>수정 삭제</div> -->
+		<!-- <div id="d_2">작성자:<span id="w_2">bbb</span><br/>내용:<span id="c_2">qwer</span><br/>수정 삭제</div> -->
+		<!-- <div id="d_3">작성자:<span id="w_3">ccc</span><br/>내용:<span id="c_3">zxcv</span><br/>수정 삭제</div> -->
+	</div>
+<script src="script1.js"></script>
+</body>
+</html>

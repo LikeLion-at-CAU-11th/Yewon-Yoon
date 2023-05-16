@@ -1,4 +1,4 @@
-import Car from './Car';
+import Car from '.js/DOM/Car.js';
 const gameResult = document.getElementById("result");
 export default class CarList {
     constructor(){

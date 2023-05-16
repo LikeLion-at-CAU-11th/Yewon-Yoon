@@ -1,5 +1,5 @@
-import Car from "./Car";
-import CarList from "./CarList";
+import Car from ".js/DOM/Car.js";
+import CarList from ".js/DOM/CarList.js";
 
 const gameResult = document.getElementById("result");
 const gameWinner = document.getElementById("racing-winners");

@@ -1,0 +1,25 @@
+#container{
+    width: 100%;
+    display: flex;
+    
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 80%;
+    margin: 10px 0 ;
+    margin: 10px;
+    padding-right: 20px;
+    background-color: #CCEEFF;
+
+}
+
+img{
+    width: 400px;
+}

@@ -1,8 +1,10 @@
 //1.방명록 작성기능
 //2. 방명록 리스트 기능
 //3. 방명록 삭제 기능
-const container=document.getElementById('container')
-async function getData(){
+const container=document.getElementById('container');
+const num=document.getElementById('num');
+//모든 방명록 가져오기
+async function getAllData(){
   // await fetch(API요청을 받는 백엔드 주소), {API요청에 담을 정보}
   let response = await fetch("http://likelion-toy.kro.kr:8000/posts/all/", {
       mode: 'no-cors'
@@ -10,7 +12,8 @@ async function getData(){
   console.log(response);
   // await로 백엔드에서 리턴을 받은 후 다음 라인이 실행
   if (response.status == 200){
-      data = await response.json()
+      toJson = await response.json();
+      let data=await toJson.response.body.items.item;
       console.log(data);
   }
   else {
@@ -18,6 +21,7 @@ async function getData(){
       return response.status;
   }
 }
+//새 방명록 추가하기
 async function postData(){
   let fetchData=await fetch("http://likelion-toy.kro.kr:8000/posts/", {
     method: "POST",
@@ -31,19 +35,18 @@ async function postData(){
       content: "멋사 파이팅!"
     }),
   }).then((response) => console.log(response));
-  const toJson=await fetchData.json();
-  console.log(toJson);
-  const data = await toJson.response.body.items.item;
-  console.log(data);
-  {data.map((datas,i)=>{
-    const text = document.createElement('span');
-    text.innerHTML=`
-    작성자
-    내용
-    `
-    container.appendChild('text');
-  })}
-
+}
+//특정 방명록 가져오기
+async function getData(){
+  let getData=await fetch(("https://jsonplaceholder.typicode.com/posts/3/"))
+  .then(res =>res.json())
+  .then(json =>console.log(json));
+}
+//특정 방명록 삭제하기
+async function deleteData(){
+  let deleteData=await fetch("https://jsonplaceholder.typicode.com/posts/3/", {
+    method: "DELETE",
+    }).then((response) => console.log(response));
 }
 
 //아래는 그냥 참고 코드

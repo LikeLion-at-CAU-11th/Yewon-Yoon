@@ -1,7 +1,7 @@
 //1.방명록 작성기능
 //2. 방명록 리스트 기능
 //3. 방명록 삭제 기능
-const form=document.getElementById('namelist');
+const form=document.getElementById('nameList');
 
 const container=document.getElementById('container');
 const num=document.getElementById('num');
@@ -21,6 +21,7 @@ contentInput.addEventListener('input', function(event) {
 form.addEventListener('submit', (e)=>{
   e.preventDefault();
   let formdata = new FormData(form);
+  console.log(formdata);
   let formDataJson = {};
   for (let [key, value] of formdata.entries()) {
     formDataJson[key] = value;

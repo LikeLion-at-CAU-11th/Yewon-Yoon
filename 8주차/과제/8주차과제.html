@@ -9,25 +9,16 @@
 <body>
     <h3>방명록</h3>
 	<!-- 서버로 데이터를 전송하려면 form이 꼭 필요함. -->
-	<form name="f">
-		<table id="t1">
-			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="writer" id="writer"></td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="content" id="content"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><input type="text" name="content" id="content"></td>
-			</tr>
-			<tr>
-				<th>작성</th>
-				<td><input type="button" value="작성" onclick="postData()"></td> 
-			</tr>
-		</table>
+	<form id="nameList">
+		<strong>작성자</strong>
+		<input type="text" name="writer" id="writer">
+		
+		<strong>제목</strong>
+		<input type="text" name="title" id="title">
+			
+		<strong>내용</strong>
+		<input type="text" name="content" id="content">
+		<button type="submit">Submit</button>
 	</form>
 	
 	<h3>글 목록</h3>

@@ -3,9 +3,9 @@
 //3. 방명록 삭제 기능
 const form=document.getElementById('nameList');
 
-const container=document.getElementById('container');
+const containerList=document.getElementById('container-list');
 const num=document.getElementById('num');
-const writerInput = document.getElementById('writer');
+const writerInput = document.getElementById('author');
 const titleInput = document.getElementById('title');
 const contentInput = document.getElementById('content');
 writerInput.addEventListener('input', function(event) {
@@ -26,6 +26,7 @@ form.addEventListener('submit', (e)=>{
   for (let [key, value] of formdata.entries()) {
     formDataJson[key] = value;
   }
+  console.log(formDataJson);
   fetch("http://likelion-toy.kro.kr:8000/posts/", {
     method: "POST",
     headers: {
@@ -33,27 +34,63 @@ form.addEventListener('submit', (e)=>{
     },
     body: JSON.stringify(formDataJson),
   })
-  .then(res => console.log(res.json()))
+  .then(res => res.json())
   .then(data=>console.log(data));
+  renderUsers();
 });
 
 //모든 방명록 가져오기
-async function getAllData(){
+async function getUsers(){
   // await fetch(API요청을 받는 백엔드 주소), {API요청에 담을 정보}
-  let response = await fetch("http://likelion-toy.kro.kr:8000/posts/all/", {
-      mode: 'no-cors'
-  })
-  console.log(response);
-  // await로 백엔드에서 리턴을 받은 후 다음 라인이 실행
-  if (response.status == 200){
-      toJson = await response.json();
-      let data=await toJson.response.body.items.item;
-      console.log(data);
+  try {
+    let res = await fetch("http://likelion-toy.kro.kr:8000/posts/all/");
+    let toJson =  await res.json();
+    console.log(toJson);
+    return toJson;
+  } catch (error) {
+    console.log(error);
   }
-  else {
-      console.log(response.status, "유저 활동 데이터가 없습니다");
-      return response.status;
+}
+async function renderUsers(){
+  let jsonData=await getUsers();
+  let users=jsonData.data;
+  containerList.innerHTML='';
+  {users.map((user,i)=>{
+    const link=document.createElement('div');
+    link.id=`user_${user.post_id}`;
+    const text = document.createElement('span');
+    text.innerHTML=`
+    ${i}번째 사람
+    <br>
+    작성자:${user.author}
+    제목:${user.title}
+    내용:${user.content}
+    `;
+    const button = document.createElement('button');
+    button.innerText='삭제';
+    button.addEventListener('click',()=>{
+      console.log(user.post_id);
+      deleteData(user.post_id); // 해당 방명록의 ID를 전달하여 삭제 함수 호출
+    });
+    containerList.appendChild(link);
+    link.appendChild(text);
+    link.appendChild(button);
+
+  })}
+  const viewButton = document.querySelector('button[onclick="renderUsers()"]');
+  viewButton.style.display = 'none';
+}
+async function deleteData(id){
+  try{
+    let response = await fetch(`http://likelion-toy.kro.kr:8000/posts/${id}/`, {
+    method: "DELETE",
+    });
+    let userDiv=document.getElementById(`user_${id}`);
+    containerList.removeChild(userDiv);      
   }
+  catch (error){
+    console.log(error);
+  }  
 }
 
 //특정 방명록 가져오기
@@ -63,11 +100,7 @@ async function getData(){
   .then(json =>console.log(json));
 }
 //특정 방명록 삭제하기
-async function deleteData(){
-  let deleteData=await fetch("http://likelion-toy.kro.kr:8000/posts/1/", {
-    method: "DELETE",
-    }).then((response) => console.log(response));
-}
+
 
 //아래는 그냥 참고 코드
 fetch("http://likelion-toy.kro.kr:8000/posts/all/")

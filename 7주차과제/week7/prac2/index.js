@@ -1,7 +1,7 @@
 const container=document.getElementById('container');
 let count=-1;
 function newPage()  {
-    window.open('http://127.0.0.1:5501/week7/prac2/%EB%8D%94%EB%B3%B4%EA%B8%B0.html');
+    window.open('http://127.0.0.1:5500/7%EC%A3%BC%EC%B0%A8%EA%B3%BC%EC%A0%9C/week7/prac2/%EB%8D%94%EB%B3%B4%EA%B8%B0.html');
 }
 async function getData(){
     const random = Math.floor(Math.random()*100+1);

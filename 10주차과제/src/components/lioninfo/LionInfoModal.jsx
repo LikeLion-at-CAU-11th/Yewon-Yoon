@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FilterButton from "./FilterButton";
 import UserDataSection from "./UserDataSection";
 import { getUserPerPage, getAllUser, getUserPerGender, getUserPerStack } from "../../apis/lioninfo";
-import {useSearchParams, Link, useLocation} from 'react-router-dom';
+import {useSearchParams, useLocation} from 'react-router-dom';
 import { BrowserRouter } from "react-router-dom";
 const LionInfoModal = () => {
   const [userData, setUserData] = useState([]);
@@ -12,7 +12,6 @@ const LionInfoModal = () => {
   const [activeButton, setActiveButton] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const paramsPage = searchParams.get("page");
-  const location = useLocation();
 
  
   //"All" 버튼을 눌렀을 때 모든 유저 데이터를 가져오도록 합니다.

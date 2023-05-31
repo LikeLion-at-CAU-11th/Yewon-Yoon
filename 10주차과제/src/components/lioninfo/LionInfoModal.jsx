@@ -3,13 +3,16 @@ import styled from "styled-components";
 import FilterButton from "./FilterButton";
 import UserDataSection from "./UserDataSection";
 import { getUserPerPage, getAllUser, getUserPerGender, getUserPerStack } from "../../apis/lioninfo";
-
+import {useSearchParams, Link, useLocation} from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 const LionInfoModal = () => {
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages= 7;
   const [activeButton, setActiveButton] = useState(null);
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsPage = searchParams.get("page");
+  const location = useLocation();
 
  
   //"All" 버튼을 눌렀을 때 모든 유저 데이터를 가져오도록 합니다.
@@ -17,28 +20,33 @@ const LionInfoModal = () => {
     const response = await getAllUser();
     setUserData(response.data.data);
     setActiveButton("All");
+    searchParams.delete('page');
+    setSearchParams(searchParams);
   };
-  /*useEffect(()=>{
-    handleAllUsers();
-  },[]);*/
-  //페이지 버튼을 눌렀을 때 해당 페이지에 해당하는 유저 데이터를 가져오도록 합니다.
   const handlePageChange = async (page) => {
     const response = await getUserPerPage(page);
     setUserData(response.data.data);
     setCurrentPage(page);
     setActiveButton(null);
+    setSearchParams({page});
   };
   const handleFilterButtonClick = async (type, title) => {
     setActiveButton(title);
     if (type === "page") {
       const response = await getUserPerPage(1);
       setUserData(response.data.data);
+      setCurrentPage(1);
+      searchParams.set('page',1);
+      setSearchParams(searchParams);
+
     } else if (type === "stack") {
       const response = await getUserPerStack(title);
       setUserData(response.data.data);
+      setSearchParams({title});
     } else if (type === "gender") {
       const response = await getUserPerGender(title);
       setUserData(response.data.data);
+      setSearchParams({title});
     }
   };
   
@@ -73,6 +81,9 @@ const LionInfoModal = () => {
       title: "pm",
     },
   ];
+  useEffect(() => {
+    if (paramsPage) handlePageChange(parseInt(paramsPage));
+  }, [paramsPage]);
 
   return (
     <Dom>

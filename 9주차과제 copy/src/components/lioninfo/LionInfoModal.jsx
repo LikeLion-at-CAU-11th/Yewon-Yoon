@@ -9,7 +9,6 @@ const LionInfoModal = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages= 7;
   const [activeButton, setActiveButton] = useState(null);
-  
 
  
   //"All" 버튼을 눌렀을 때 모든 유저 데이터를 가져오도록 합니다.

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Mypage = () => {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
-    const router = useNavigate
+    const router = useNavigate();
     useEffect(()=>{
         const accessToken = localStorage.getItem('accessToken');
         const refreshToken = localStorage.getItem('refreshToken');
@@ -19,8 +19,6 @@ const Mypage = () => {
                     localStorage.removeItem("accessToken");
                     localStorage.removeItem("refreshToken");
                     router("/");
-
-
                 }
             });
     },[]);

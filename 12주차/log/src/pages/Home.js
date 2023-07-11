@@ -10,6 +10,10 @@ const Home = () => {
   const [pw, changePW] = useForm();
   const router = useNavigate();
   const onClick = async () => {
+    if (!id || !pw) {
+      alert('아이디 또는 비밀번호를 입력해주세요.');
+      return;
+    }
     try {
       const result = await login(id, pw);
       localStorage.setItem('accessToken', result.accessToken);

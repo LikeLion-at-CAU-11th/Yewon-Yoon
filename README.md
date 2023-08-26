@@ -11,8 +11,7 @@
 #### 🥨 멋사 프론트엔드 파트
 
 <br>
-<a href="https://lemonbalmherb.tistory.com"><img src="https://img.shields.io/badge/Tistory-000000?style=flat-square&logo=Tistory&logoColor=white"/></a>
-<a href="https://blog.naver.com/lizzy2"><img src="https://img.shields.io/badge/Naver-03C75A?style=flat-square&logo=Naver&logoColor=white"/></a>
+
 
 <br>
 <br>
